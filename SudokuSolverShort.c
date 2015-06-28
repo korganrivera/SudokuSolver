@@ -7,31 +7,32 @@
 #include <stdlib.h>
 
 unsigned grid[9][9]={
-    {4,5,0,1,0,6,0,0,0},
-    {0,0,0,0,0,0,0,0,3},
-    {0,0,6,0,7,0,9,0,0},
-    {5,0,0,3,0,0,6,9,0},
-    {0,0,0,0,8,0,0,0,0},
-    {0,6,4,0,0,2,0,0,1},
-    {0,0,1,0,5,0,2,0,0},
     {8,0,0,0,0,0,0,0,0},
-    {0,0,0,8,0,1,0,5,4}
+    {0,0,3,6,0,0,0,0,0},
+    {0,7,0,0,9,0,2,0,0},
+    {0,5,0,0,0,7,0,0,0},
+    {0,0,0,0,4,5,7,0,0},
+    {0,0,0,1,0,0,0,3,0},
+    {0,0,1,0,0,0,0,6,8},
+    {0,0,8,5,0,0,0,1,0},
+    {0,9,0,0,0,0,4,0,0}
 };
 
 void func(unsigned x);
 void show(void);
 
 int main(void){
-    puts("\nproblem:");
+    puts("\n problem:");
     show();
     func(0);
+    puts("\n unsolvable.");
 }
 
 void func(unsigned x){
     unsigned quadindex, i, list[9]={1,1,1,1,1,1,1,1,1};
 
     //  if at element 81, the grid is complete. display and end.
-    if(x==81){ puts("\nsolution:"); show(); exit(0); }
+    if(x==81){ puts("\n solution:"); show(); exit(0); }
 
     //  if element isn't zero, skip over it.
     if(grid[x/9][x%9]){ func(x+1); return; }
@@ -62,6 +63,6 @@ void func(unsigned x){
 
 void show(void){
     unsigned i;
-    for(i=0; i<81; i++){ if(!(i%9)) putchar('\n'); printf("%u ", grid[i/9][i%9]); }
+    for(i=0; i<81; i++){ if(!(i%9)) putchar('\n'); printf(" %u", grid[i/9][i%9]); }
     putchar('\n');
 }
