@@ -34,7 +34,7 @@ void func(unsigned x){
     if(x==81){ puts("\nsolution:"); show(); exit(0); }
 
     //  if element isn't zero, skip over it.
-    if(grid[x/9][x%9]) func(x+1);
+    if(grid[x/9][x%9]){ func(x+1); return; }
 
     for(i=0; i<9; i++){
         if(grid[i][x%9]) list[grid[i][x%9]-1]=0;    //  check current column.
